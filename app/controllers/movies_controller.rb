@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
       @ratings_to_show = params[:ratings].keys
     end
 
-    @movies = Movie.with_ratings(@ratings_to_show)
+ 
     if params[:sort]
       if params[:sort].keys[0]=='sort_by_title'
         @movies = Movie.with_ratings(@ratings_to_show).order(:title)
@@ -24,11 +24,11 @@ class MoviesController < ApplicationController
         @movies = Movie.with_ratings(@ratings_to_show).order(:release_date)
         @title_color = 'bg-white'
         @date_color = 'bg-warning'
-      else
-        @movies = Movie.with_ratings(@ratings_to_show)
-        @title_color = 'bg-white'
-        @date_color = 'bg-white'
       end
+    else
+      @movies = Movie.with_ratings(@ratings_to_show)
+      @title_color = 'bg-white'
+      @date_color = 'bg-white'
     end
 
     
