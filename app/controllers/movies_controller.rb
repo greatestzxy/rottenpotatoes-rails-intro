@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
         @title_color = 'bg-warning'
         @date_color = 'bg-white'
       elsif params[:sorting_para].keys[0]=='date'
-        @movies = Movie.with_ratings(@ratings_to_show).order(:title)
+        @movies = Movie.with_ratings(@ratings_to_show).order(:date)
         @title_color = 'bg-white'
         @date_color = 'bg-warning'
       else
