@@ -7,14 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
     @all_ratings = Movie.all_ratings
     if params[:ratings].blank? 
-      if params[:commit] == "Refresh"
-        @ratings_to_show = []
-      else
-        @ratings_to_show = Movie.all_ratings
-      end
+      @ratings_to_show = Movie.all_ratings
+    end
     else
       @ratings_to_show = params[:ratings].keys
     end
