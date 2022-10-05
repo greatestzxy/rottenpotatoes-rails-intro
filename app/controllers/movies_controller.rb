@@ -11,8 +11,15 @@ class MoviesController < ApplicationController
     if params[:commit] == "Refresh"
       @ratings_to_show = []
     else
-      @ratings_to_show = params[:ratings].keys
+      if params[:ratings].blank?
+        @ratings_to_show = []
+      else
+        @ratings_to_show = params[:ratings].keys
+      end
     end
+
+
+
     @movies = Movie.with_ratings(@ratings_to_show)
   end
 
