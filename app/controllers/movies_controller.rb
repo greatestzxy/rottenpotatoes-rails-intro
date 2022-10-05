@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
       @ratings_to_show = params[:ratings].keys
     end
 
+    @movies = Movie.with_ratings(@ratings_to_show)
     if params[:sorting_para]
       if params[:sorting_para].keys[0]=='title'
         @movies = Movie.with_ratings(@ratings_to_show).order(:title)
@@ -30,9 +31,7 @@ class MoviesController < ApplicationController
       end
     end
 
-
-
-    @movies = Movie.with_ratings(@ratings_to_show)
+    
 
 
   end
