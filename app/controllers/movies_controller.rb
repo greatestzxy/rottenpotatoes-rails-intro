@@ -17,8 +17,8 @@ class MoviesController < ApplicationController
       end
     else
       @ratings_to_show = params[:ratings].keys
-      session[:ratings]=params[:ratings]
     end
+    @movies = Movie.with_ratings(@ratings_to_show)
   end
 
   def new
