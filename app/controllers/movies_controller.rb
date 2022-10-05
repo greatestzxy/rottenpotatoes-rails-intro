@@ -8,8 +8,9 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.all_ratings
-    @ratings_to_show = []
-    check_box_tag 
+    if params[:ratings].blank? 
+      @ratings_to_show = []
+    end
   end
 
   def new
