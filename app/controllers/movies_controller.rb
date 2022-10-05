@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
         @title_color = 'bg-white'
         @date_color = 'bg-warning'
         redirect_to action: :index, sort:{'release_date'=>1}, saved_ratings: session[:saved_ratings]
-      else
+      elsif params[:sort].keys[0]=='sort_by_title'
         @movies = Movie.with_ratings(session[:saved_ratings]).order(:title)
         @title_color = 'bg-white'
         @date_color = 'bg-warning'
@@ -51,8 +51,6 @@ class MoviesController < ApplicationController
       @title_color = 'bg-white'
       @date_color = 'bg-white'
     end
-
-
   end
 
   def new
