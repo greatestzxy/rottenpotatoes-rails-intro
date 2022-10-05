@@ -15,13 +15,13 @@ class MoviesController < ApplicationController
     end
 
     @movies = Movie.with_ratings(@ratings_to_show)
-    if params[:sorting_para]
-      if params[:sorting_para].keys[0]=='title'
+    if params[:sort]
+      if params[:sort].keys[0]=='title'
         @movies = Movie.with_ratings(@ratings_to_show).order(:title)
         @title_color = 'bg-warning'
         @date_color = 'bg-white'
-      elsif params[:sorting_para].keys[0]=='date'
-        @movies = Movie.with_ratings(@ratings_to_show).order(:date)
+      elsif params[:sort].keys[0]=='date'
+        @movies = Movie.with_ratings(@ratings_to_show).order(:release_date)
         @title_color = 'bg-white'
         @date_color = 'bg-warning'
       else
